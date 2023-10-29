@@ -32,7 +32,9 @@ app.post("/send", (req, res) => {
     .send(message)
     .then((response) => {
       console.log("Successfully sent message:", response);
-      res.send("Notification sent successfully");
+      res.status(200).json({
+        message: "Successfully sent message",
+      });
     })
     .catch((error) => {
       console.log("Error sending message:", error);
