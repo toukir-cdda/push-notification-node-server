@@ -14,8 +14,9 @@ admin.initializeApp({
 });
 
 app.post("/send", (req, res) => {
+  const deviceToken = req.body.fcmtoken.replace(/\n/g, " ");
   const message = {
-    token: req.body.fcmToken,
+    token: deviceToken.trim(),
     data: {
       openURL: req.body.openURL,
       title: req.body.title,
